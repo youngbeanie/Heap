@@ -1,32 +1,29 @@
 #include <iostream>
-#include <vector>
 #include "heap.hpp"
+#include "hospital.hpp"
 
 using namespace std;
 int main() {
+    hospital *hospitalPtr = &hospital::get_instance();
 
-    vector<int> v;
-    v.push_back(5);
-    v.push_back(9);
-    v.push_back(6);
-    v.push_back(7);
-    v.push_back(1);
-    v.push_back(3);
-    v.push_back(8);
+    hospitalPtr->queue_patient(12);
+    hospitalPtr->queue_patient(15);
+    hospitalPtr->queue_patient(2);
+    hospitalPtr->queue_patient(3);
+    hospitalPtr->queue_patient(10);
+    hospitalPtr->queue_patient(20);
+    hospitalPtr->queue_patient(8);
+    hospitalPtr->queue_patient(0);
+    cout << "There are " << hospitalPtr->number_waiting() << " people currently in line." << endl;
 
-    heap<vector<int>, int> hospital(v);
+    cout << "Treating patient number " << hospitalPtr->treat_patient() << endl;
+    cout << "Treating patient number " << hospitalPtr->treat_patient() << endl;
+    cout << "Treating patient number " << hospitalPtr->treat_patient() << endl;
+    cout << "There are " << hospitalPtr->number_waiting() << " people currently in line." << endl;
 
-    cout << hospital << endl;
-
-    hospital.pop();
-    hospital.push(10);
-
-    cout << hospital << endl;
-
-    cout << hospital.size() << endl;
-    cout << hospital.is_empty() << endl;
-    hospital.clear();
-    cout << hospital.is_empty() << endl;
+    cout << "Hospital on fire" << endl;
+    hospitalPtr->empty_hospital();
+    cout << "There are " << hospitalPtr->number_waiting() << " people currently in line." << endl;
 
     return 0;
 }

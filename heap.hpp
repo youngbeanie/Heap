@@ -5,14 +5,11 @@
 #ifndef HEAP_HEAP_HPP
 #define HEAP_HEAP_HPP
 #include <iostream>
-#include <vector>
 #include <deque>
-#include <algorithm>
 
 using namespace std;
 
 template <typename containerOfElements, typename T>
-
 class heap{
 
     deque<T> heap_deque;
@@ -22,7 +19,6 @@ class heap{
     }
 
 public:
-
     heap(containerOfElements items){
         for(auto item : items){
             heap_deque.push_back(item);
@@ -55,7 +51,6 @@ public:
     }
 
 private:
-
     friend ostream& operator<< (ostream& os, const heap& heap){
         os << "Heap:" << endl;
         for(int i = 0; i < heap.heap_deque.size(); i++){
@@ -63,8 +58,6 @@ private:
         }
         return os;
     }
-
-
 };
 
 
